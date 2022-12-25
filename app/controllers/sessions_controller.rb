@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         :session,
         value: token,
         expires: 1.year.from_now,
-        domain: (ENV["HEROKU_APP_NAME"] || "localhost"),
+        # domain: (ENV["HEROKU_APP_NAME"] || "localhost"),
         path: "/",
         secure: Rails.env.production?,
         httponly: Rails.env.production?
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
   end
 
   def logout
-    response.delete_cookie(:session, domain: (ENV["HEROKU_APP_NAME"] || 'localhost'), path: "/")
+    response.delete_cookie(:session, path: "/")
     redirect_to '/movies'
   end
 end
