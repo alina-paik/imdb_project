@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :set_session
   authorize :user, through: :current_user
 
+  SECRET="yoursecretword" # move to .env
+
   attr_reader :current_user
 
   def set_session
@@ -20,11 +22,11 @@ class ApplicationController < ActionController::Base
   end
 
   def encode_user_data(payload)
-    JWT.encode payload, ENV['SECRET'], 'HS256'
+    JWT.encode payload, SECRET, 'HS256'
   end
 
   def decode_user_data(token)
-    JWT.decode token, ENV['SECRET'], true, algorithm: 'HS256'
+    JWT.decode token, SECRET, true, algorithm: 'HS256'
   rescue StandardError => e
     puts e
   end
