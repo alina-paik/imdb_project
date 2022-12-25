@@ -1,0 +1,19 @@
+<main class="bg-white">
+  <section class="py-1 text-center container">
+    <div class="row py-3">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="text-white bg-dark"</h1>
+       </div>
+     </div>
+  </section>
+  <%= form_with(model: @category, local: true) do |f| %>
+  <div class="d-flex gap-2 w-00 justify-content-between">
+    <div>
+      <%= f.label :name %>
+      <hr>
+      <h6 class="mb-5"><%= f.text_field :name, class: "form-control", placeholder: "category_name" %></h6>
+      <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</main>

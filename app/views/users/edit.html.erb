@@ -1,0 +1,54 @@
+<main class="bg-white">
+ <section style="background-color: #eee;">
+   <div class="container py-5">
+     <div class="row">
+       <div class="col">
+       </div>
+     </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="https://previews.dropbox.com/p/thumb/ABy9i2BbazhCwBehCcYMEmb_95mmy59J_-T9puJiwS2PQuZ5s1zQjKmnudRbE9j1mXPI2ucWp-bL0fHLcc1z-l0QCKhoxjA_bqhDs47MxT3x6llfeHRkyq3RxTNVR_NkVHDtX2D-zrGW_01DLmSv6hpJO2LoI5QDsz7w3i4QECnnwkHdgDF1wofStIaIWvPHfztEhC9Us9c7gWJYjCgA0CSMsqofyXa1-JWqX_lhVeQLG3Qc7YMHECSf1TsmlYFie7m8A4SvjkyF8NT0HAQqCQjwrtUmbE5rQF3vULYySeluIiMD866tQIZ9-T7sm8pUpPF50aK53CjLVhg5yftrKZ9z8c8zwqOvYbZT5uqYuMP5je4G-SKB1XpAOJYru7T3qV0/p.png"
+            alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3"><%= @current_user.username %></h5>
+          </div>
+        </div>
+        </div>
+      </div>
+        <%= form_with model: @current_user, url: user_path(@current_user), method: :patch, local: true do |f| %>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Username</p>
+              </div>
+              <div class="col-sm-9">
+
+                 <p class="text-muted mb-0"><%= f.text_field :username, value: @current_user.username %></p>
+
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+
+                 <p class="text-muted mb-0"><%= f.text_field :email, value: @current_user.email %></p>
+
+              </div>
+              <hr>
+
+            </div>
+            <%= f.submit %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </section>
+</main>

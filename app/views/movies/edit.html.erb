@@ -1,0 +1,27 @@
+<main class="bg-dark">
+  <section class="py-1 text-center container">
+    <div class="row py-3">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="text-white bg-dark"</h1>
+       </div>
+     </div>
+  </section>
+  <div class="row featurette">
+    <div class="col-md-7 order-md-2 text-white">
+      <h2 class="featurette-heading"><%= @movie.title %></</h2>
+      <p small class="text-muted">Rating: <%= @movie.average_rating %></p>
+      <p class="lead"><%= @movie.description %></p>
+
+      <%= form_with model: @movie, url: movie_path(@movie), method: :patch, local: true do |f| %>
+
+        <%= f.text_field :title, value: @movie.title %>
+        <%= f.text_area :description, value: @movie.description %>
+        <%= f.text_field :title_image, value: @movie.title_image %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+    <div class="col-md-5 order-md-1">
+      <img src="<%= @movie.title_image %>" class="bd-placeholder-img card-img-top" width="500" height="600" >
+    </div>
+  </div>
+</main>

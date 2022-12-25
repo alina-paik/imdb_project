@@ -1,0 +1,37 @@
+<main class="bg-dark text-white">
+  <section class="py-1 text-center container">
+    <div class="row py-3">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="text-white bg-dark"</h1>
+       </div>
+     </div>
+  </section>
+
+    <%= form_with(model: @movie, local: true) do |f| %>
+
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control", placeholder: "movie title" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control", placeholder: "movie description"%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :title_image %>
+      <%= f.text_field :title_image, class: "form-control", placeholder: "title_image"%>
+    </div>
+    <hr>
+    <%= f.collection_check_boxes(:categories, @categories_mapping, :last, :first) do |b| %>
+   <div class="form-check form-check-inline">
+     <%= b.check_box class: 'form-check-input' %>
+     <%= b.label class: 'form-check-label' %>
+   </div>
+ <% end %>
+
+    <hr>
+    <%= f.submit %>
+    <% end %>
+</main>

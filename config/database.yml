@@ -1,0 +1,20 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: IMDB_view_development
+  pool: 5
+  username: postgresUser
+  password: postgresPW
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
+  timeout: 5000
+
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: IMDB_view_test
+  pool: 5
+  username: postgresUser
+  password: postgresPW
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
+  timeout: 5000

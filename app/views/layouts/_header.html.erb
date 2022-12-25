@@ -1,0 +1,52 @@
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/movies#index" class="nav-link px-2 text-secondary">Home</a></li>
+        <li><a href="/categories#index" class="nav-link px-2 text-white">Categories</a></li>
+      </ul>
+
+      <%- if @current_user&.admin %>
+      <div class="text-end">
+        <%= link_to new_movie_path do %>
+        <button type="button" class="btn btn-primary me-2">Add movie</button>
+        <% end %>
+        <%= link_to new_category_path do %>
+        <button type="button" class="btn btn-primary me-2">Add category</button>
+        <% end %>
+        </div>
+        <% end %>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+      </form>
+      <%- if @current_user %>
+      <div class="text-end">
+        <%= button_to "Logout", sessions_logout_path, method: :delete, form: {turbolink: false}, class: "btn btn-primary me-2" %>
+      </div>
+      <div class="dropdown text-end">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://previews.dropbox.com/p/thumb/ABy9i2BbazhCwBehCcYMEmb_95mmy59J_-T9puJiwS2PQuZ5s1zQjKmnudRbE9j1mXPI2ucWp-bL0fHLcc1z-l0QCKhoxjA_bqhDs47MxT3x6llfeHRkyq3RxTNVR_NkVHDtX2D-zrGW_01DLmSv6hpJO2LoI5QDsz7w3i4QECnnwkHdgDF1wofStIaIWvPHfztEhC9Us9c7gWJYjCgA0CSMsqofyXa1-JWqX_lhVeQLG3Qc7YMHECSf1TsmlYFie7m8A4SvjkyF8NT0HAQqCQjwrtUmbE5rQF3vULYySeluIiMD866tQIZ9-T7sm8pUpPF50aK53CjLVhg5yftrKZ9z8c8zwqOvYbZT5uqYuMP5je4G-SKB1XpAOJYru7T3qV0/p.png"
+          alt="mdo" width="32" height="32" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+          <li><a class="dropdown-item" href="users/<%= @current_user.id %>">Profile</a></li>
+        </ul>
+      </div>
+      <% else %>
+      <div class="text-end">
+        <%= link_to new_session_path do %>
+        <button type="button" class="btn btn-primary me-2">Login</button>
+        <% end %>
+        <%= link_to new_user_path do %>
+        <button type="button" class="btn btn-warning">Sign-up</button>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</header>
