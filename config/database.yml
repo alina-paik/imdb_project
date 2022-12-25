@@ -18,3 +18,9 @@ test:
   password: postgresPW
   host: <%= ENV['DB_HOST'] || 'localhost' %>
   timeout: 5000
+
+production:
+  <<: *default
+  database: myapp_production
+  username: myapp
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
